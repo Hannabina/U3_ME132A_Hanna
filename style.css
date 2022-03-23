@@ -1,0 +1,34 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrapper {
+    margin: 20px;
+    padding: 25px;
+    border: solid var(--MBC);
+    border-radius: 30px;
+    background-color: var(--MBG);
+
+}
+#form {
+    display: flex;
+    filter: drop-shadow(5px 5px 5px var(--DS));
+}
+
+form {
+    background-color: var(--BG);
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 2px var(--BC);
+    font-size: larger;
+}
+
+#result {
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 2px var(--BC);
+    background-color: var(--BG);
+    filter: drop-shadow(5px 5px 5px var(--DS));
+}
