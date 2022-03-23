@@ -6,21 +6,31 @@ body {
 #wrapper {
     margin: 20px;
     padding: 25px;
-    border: solid var(--MBC);
+    border: solid rgb(92, 84, 84) 2px;
     border-radius: 30px;
-    background-color: var(--MBG);
+    background-color: rgb(189, 186, 186);
 
 }
 #form {
     display: flex;
-    filter: drop-shadow(5px 5px 5px var(--DS));
+    filter: drop-shadow(5px 5px 5px rgb(112, 112, 112));
+}
+
+header {
+    font-size: larger;
+    font-weight: bold;
+}
+
+#course > h3 {
+    font-size: large;
+    color: gray;
 }
 
 form {
-    background-color: var(--BG);
+    background-color: rgb(230, 228, 228);
     padding: 5px;
     border-radius: 5px;
-    border: solid 2px var(--BC);
+    border: solid 2px rgb(92, 84, 84);
     font-size: larger;
 }
 
@@ -28,7 +38,7 @@ form {
     margin-top: 15px;
     padding: 5px;
     border-radius: 5px;
-    border: solid 2px var(--BC);
-    background-color: var(--BG);
-    filter: drop-shadow(5px 5px 5px var(--DS));
+    border: solid 2px rgb(92, 84, 84);
+    background-color: rgb(230, 228, 228);
+    filter: drop-shadow(5px 5px 5px rgb(112, 112, 112));
 }
