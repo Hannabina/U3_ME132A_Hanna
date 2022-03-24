@@ -1,9 +1,9 @@
 "use strict";
 
-let students = DATABASE.students
+// let students = DATABASE.students
 // let student = [DATABASE.students[0], DATABASE.students[1]];
 
-function renderStudent (id){
+function renderStudent(id){
     let div = document.createElement("div");
     let student = DATABASE.students[id];
     div.classList = "container";
@@ -32,7 +32,7 @@ function totalCredits(student){
     return creditsSum;
 }
 
-function renderStudents (students){
+function renderStudents(students){
     let studentsElement = document.getElementById("result");
     for ( let student of students ) {
         let studentElement = renderStudent(student.studentID);
@@ -40,32 +40,34 @@ function renderStudents (students){
     }
 }
 
-function renderCourses (student){
-    let courseData = DATABASE.courses;
+function renderCourses(student){
+    let courseDatabase = DATABASE.courses;
     let courses = [];
     for (let i = 0; i < student.courses.length; i++){
         let id = student.courses[i].courseId 
-        courses.push(courseData[id]);
+        courses.push(courseDatabase[id]);
     }
 
-   let courseDiv = []
+   let courseInfo = [];
    for (let i = 0; i < courses.length; i++) {
        let div = document.createElement("div");
 
-       if (student.courses[i].passedCredits == courseData[courses[i].courseId].totalCredits) {
+       if (student.courses[i].passedCredits == courseDatabase[courses[i].courseId].totalCredits) {
            let text = div.innerHTML = 
            `<div class="done"><h4>${courses[i].title}</h4>
-           <p>${student.courses[i].started.semester} ${student.courses[i].started.year} (${student.courses[i].passedCredits} of ${courseData[courses[i].courseId].totalCredits} credits)</p></div>`
-           courseDiv.push(text)
+           <p>${student.courses[i].started.semester} ${student.courses[i].started.year} (${student.courses[i].passedCredits} of ${courseDatabase[courses[i].courseId].totalCredits} credits)</p></div>`
+           courseInfo.push(text)
        } else {
            let text = div.innerHTML = 
            `<div class="not-done"><h4>${courses[i].title}</h4>
-           <p>${student.courses[i].started.semester} ${student.courses[i].started.year} (${student.courses[i].passedCredits} of ${courseData[courses[i].courseId].totalCredits} credits)</p></div>`
-           courseDiv.push(text)
+           <p>${student.courses[i].started.semester} ${student.courses[i].started.year} (${student.courses[i].passedCredits} of ${courseDatabase[courses[i].courseId].totalCredits} credits)</p></div>`
+           courseInfo.push(text)
        }
    }
-   return courseDiv.toString().split(",").join("");
+   return courseInfo.toString().split(",").join("");
 }
+
+
 
 
 renderStudents(DATABASE.students);
