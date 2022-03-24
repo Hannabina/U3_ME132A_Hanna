@@ -10,9 +10,9 @@ function renderStudent (id){
     div.innerHTML = `
     <header> ${student.firstName} ${student.lastName} (total credits: ${totalCredits(student)})</header>
     <div>
-        <div id="course">
+        <div class="course">
             <h3>Courses: </h3>
-            <div id="courses">
+            <div class="courses">
                 ${renderCourses(student)}
             </div> 
         </div>
@@ -59,8 +59,13 @@ function renderCourses (student){
            courseDiv.push(text)
        } else {
            let text = div.innerHTML = 
+<<<<<<< Updated upstream
            `<div><h4>${courses[i].title}</h4>
            <p>(${student.courses[i].passedCredits} of ${courseData[courses[i].courseId].totalCredits} credits)</p></div>`
+=======
+           `<div class="not-done"><h4>${courses[i].title}</h4>
+           <p>${student.courses[i].started.semester} ${student.courses[i].started.year} (${student.courses[i].passedCredits} of ${courseData[courses[i].courseId].totalCredits} credits)</p></div>`
+>>>>>>> Stashed changes
            courseDiv.push(text)
        }
    }
