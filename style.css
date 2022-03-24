@@ -1,13 +1,13 @@
 body {
     margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Playfair Display', serif;
 }
 
 #wrapper {
     margin: 20px;
     padding: 25px;
     border: solid rgb(92, 84, 84) 2px;
-    border-radius: 30px;
+    border-radius: 10px;
     background-color: rgb(189, 186, 186);
 
 }
@@ -21,7 +21,7 @@ header {
     font-weight: bold;
 }
 
-#course > h3 {
+.course > h3 {
     font-size: large;
     color: gray;
 }
@@ -39,28 +39,29 @@ form {
     padding: 5px;
     border-radius: 5px;
     border: solid 2px rgb(92, 84, 84);
-    background-color: rgb(230, 228, 228);
+    background-color: rgb(223, 223, 223);
     filter: drop-shadow(5px 5px 5px rgb(112, 112, 112));
 }
 
-#courses {
+.courses {
     display: flex;
     flex-wrap: wrap;
     
 }
 
 .container {
-    border: solid black 2px;
+    border: solid black 1px;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+    background-color: rgb(255, 255, 255);
 }
 
 .done {
-    background-color: rgb(142, 196, 142);
+    background-color: rgb(191, 235, 191);
 }
 
-#courses > div {
+.courses > div {
     display: flex;
     flex-direction: column;
     border: solid 1px black;
@@ -70,11 +71,16 @@ form {
     padding-left: 5px;
     padding-right: 5px;
 }
-#courses > div > h4 {
+.courses > div > h4 {
     margin: 0px;
     padding: 0px;
 }
-#courses > div > p {
+.courses > div > p {
     margin: 5px;
     padding: 0px;
+}
+
+.not-done{
+    background-color: rgb(223, 223, 223);
+    color: rgb(83, 83, 83);
 }
