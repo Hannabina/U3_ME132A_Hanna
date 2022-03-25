@@ -17,7 +17,7 @@ function renderCourse(id) {
             </div>
             <h3>Teachers: </h3>
             <div class="teachers"> 
-                ${courses.teachers}
+                ${findTeachers(courses)}
             </div>
             <h3>Students: </h3>
             <div class="students">
@@ -34,14 +34,33 @@ function findResponsible(courses){
        let div = document.createElement("div");
        if (DATABASE.teachers[i].teacherId == courses.courseResponsible) {
            let text = div.innerHTML = 
-           `<div class="responsibleteachers"><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4>`
+           `<div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4></div>`
            responsibleTeacher.push(text);
        } 
    }
    return responsibleTeacher.toString().split(",").join("");
 }
 
-
+function findTeachers(courses) {
+    let teacherBox = [];
+    for (let i = 0; i < DATABASE.teachers.length; i++) {
+        let div = document.createElement("div")
+        if (DATABASE.teachers[i].teacherId == courses.teachers[0]) {
+            let text = div.innerHTML = `
+            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName}</h4></div>`
+            teacherBox.push(text);
+        } else if (DATABASE.teachers[i].teacherId == courses.teachers[1]) {
+            let text = div.innerHTML = `
+            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName}</h4></div>`
+            teacherBox.push(text);
+        } else if (DATABASE.teachers[i].teacherId == courses.teachers[2]) {
+            let text = div.innerHTML = `
+            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName}</h4></div>`
+            teacherBox.push(text);
+        } 
+    }
+    return teacherBox.toString().split(",").join("");
+}
 
 function renderCourses(courses){
     let coursesElement = document.getElementById("result");
