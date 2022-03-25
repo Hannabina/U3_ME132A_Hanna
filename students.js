@@ -1,6 +1,6 @@
 "use strict";
 
-// let students = DATABASE.students
+let students = DATABASE.students
 // let student = [DATABASE.students[0], DATABASE.students[1]];
 
 function renderStudent(id){
@@ -67,6 +67,40 @@ function renderCourses(student){
    return courseInfo.toString().split(",").join("");
 }
 
+function searchLastName() {
+    return input.value.toLowerCase();
+}
+
+let input = document.getElementById("student-search");
+input.addEventListener("keyup", studentsLastName);
+
+function studentsLastName (){
+    let studentsArray = [];
+    for ( let i = 0; i < students.length; i++){
+        document.getElementById("result").innerHTML = "";
+        if ("" == searchLastName()){
+            document.getElementById("result").innerHTML = "";
+        } else if (students[i].lastName.toLowerCase().includes(searchLastName())) {
+            studentsArray.push(students[i]);
+        } 
+
+    }
+
+    renderStudents(studentsArray)
+}
+
+function submit () {
+    let studentsArray = []
+    for ( let i = 0; i < students.length; i++){
+        if (students[i].lastName.toLocaleLowerCase().includes(searchLastName())) {
+            studentsArray.push(students[i]);
+        } 
+    }
+
+    renderStudents(studentsArray)
+}
+
+input.addEventListener("submit", submit);
 
 
 
