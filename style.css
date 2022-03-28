@@ -86,10 +86,67 @@ form {
 }
 .box {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px, 200px, 1fr;
 }
 .box > h3 {
     display: flex;
     justify-content: center;
+}
+.students {
+    display: flex;
+    flex-wrap: wrap;
+}
+.responsible {
+    background-color: rgb(255, 183, 187);
+}
+.students > div, .teachers > div, .responsible {
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border: solid 1px black;
+    padding-left: 6px;
+    padding-right: 6px; 
+    margin: 5px;
+    align-items: center;
+}
+.teachers {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.resp-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.responsible {
+    margin-right: 15px;
+}
+
+.students {
+    font-size: small;
+}
+
+.course-title {
+    padding-top: 10px;
+    padding-bottom: 15px;
+    font-size: 22px;
+}
+
+.students > div {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.students > div > h4, .students > div > p {
+    margin: 0px;
+}
+
+h3 {
+    color: rgb(97, 97, 97);
+}
+
+.responsible {
+    height: fit-content;
 }
 
