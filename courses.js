@@ -45,18 +45,12 @@ function findTeachers(courses) {
     let teacherBox = [];
     for (let i = 0; i < DATABASE.teachers.length; i++) {
         let div = document.createElement("div")
-        if (DATABASE.teachers[i].teacherId == courses.teachers[0]) {
-            let text = div.innerHTML = `
-            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4></div>`
-            teacherBox.push(text);
-        } else if (DATABASE.teachers[i].teacherId == courses.teachers[1]) {
-            let text = div.innerHTML = `
-            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4></div>`
-            teacherBox.push(text);
-        } else if (DATABASE.teachers[i].teacherId == courses.teachers[2]) {
-            let text = div.innerHTML = `
-            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4></div>`
-            teacherBox.push(text);
+        for (let x = 0; x < courses.teachers.length; x++){
+            if (DATABASE.teachers[i].teacherId == courses.teachers[x]) {
+                let text = div.innerHTML = `
+                <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post})</h4></div>`
+                teacherBox.push(text);
+            }
         } 
     }
     return teacherBox.toString().split(",").join("");
@@ -113,6 +107,35 @@ function courseTitle (){
     }
 
     renderCourses(courseArray)
+}
+
+function checkDarkMode () {
+    const darkMode = localStorage.getItem("darkMode");
+    if (darkMode == null) {
+    localStorage.setItem("darkMode", JSON.stringify(false));
+ }
+    var element = document.body;
+
+    if (JSON.parse(darkMode)== true) {
+        element.classList.add("darkMode")
+    } else {
+        element.classList.remove("darkMode");
+    }
+}
+
+function darkMode() {
+    var element = document.body;
+    const darkMode = localStorage.getItem("darkMode")
+    element.classList.toggle("darkMode");
+
+    if (JSON.parse(darkMode) == true) {
+        element.classList.remove("darkMode");
+        localStorage.setItem("darkMode", JSON.stringify(false));
+    } 
+    else if (JSON.parse(darkMode) == false) {
+        element.classList.add("darkMode");
+        localStorage.setItem("darkMode", JSON.stringify(true));
+    }
 }
 
 // function submit () {

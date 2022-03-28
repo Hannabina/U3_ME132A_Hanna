@@ -89,18 +89,18 @@ function studentsLastName (){
     renderStudents(studentsArray)
 }
 
-function submit () {
-    let studentsArray = []
-    for ( let i = 0; i < students.length; i++){
-        if (students[i].lastName.toLocaleLowerCase().includes(searchLastName())) {
-            studentsArray.push(students[i]);
-        } 
-    }
+// function submit () {
+//     let studentsArray = []
+//     for ( let i = 0; i < students.length; i++){
+//         if (students[i].lastName.toLocaleLowerCase().includes(searchLastName())) {
+//             studentsArray.push(students[i]);
+//         } 
+//     }
 
-    renderStudents(studentsArray)
-}
+//     renderStudents(studentsArray)
+// }
 
-input.addEventListener("submit", submit);
+// input.addEventListener("submit", submit);
 
 
 

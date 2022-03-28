@@ -146,7 +146,8 @@ h3 {
     color: rgb(97, 97, 97);
 }
 
-.responsible {
-    height: fit-content;
+.responsible > div > h4, .teachers > div > h4 {
+    margin: 0px;
 }
+
 
