@@ -94,13 +94,13 @@ function darkMode() {
     const darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
 
-    if (JSON.parse(darkMode) == true) {
+    if (JSON.parse(darkMode) === true) {
         element.classList.remove("darkMode");
         localStorage.setItem("darkMode", JSON.stringify(false));
     } 
-    else if (JSON.parse(darkMode) == false) {
+    else if (JSON.parse(darkMode) === false) {
         element.classList.add("darkMode");
-        localStorage.setItem("darkMode", JSON.stringify(true));
+        localStorage.setItem("darkMode", JSON.stringify(true)); //localStorage fungerar ej än!
     }
 }
 

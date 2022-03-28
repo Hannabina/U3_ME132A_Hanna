@@ -16,9 +16,16 @@ body {
     background-color: rgb(189, 186, 186);
 
 }
+
+h1 {
+    text-align: center;
+    margin-top: 0px;
+}
+
 #form {
     display: flex;
     filter: drop-shadow(5px 5px 5px rgb(112, 112, 112));
+    justify-content: center;
 }
 
 header {
