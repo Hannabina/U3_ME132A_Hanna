@@ -2,9 +2,14 @@ body {
     margin: 0px;
     font-family: 'Playfair Display', serif;
 }
+#all-wrapper {
+    margin: 0px;
+    padding: 20px;
+    background-color: white;
+}
 
 #wrapper {
-    margin: 20px;
+    margin: 0px;
     padding: 25px;
     border: solid rgb(92, 84, 84) 2px;
     border-radius: 10px;
@@ -148,6 +153,10 @@ h3 {
 
 .responsible > div > h4, .teachers > div > h4 {
     margin: 0px;
+}
+
+.darkMode {
+    filter: invert(1) hue-rotate(180deg);
 }
 
 

@@ -124,7 +124,7 @@ function checkDarkMode () {
 }
 
 function darkMode() {
-    var element = document.body;
+    let element = document.body;
     const darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
 
@@ -137,6 +137,9 @@ function darkMode() {
         localStorage.setItem("darkMode", JSON.stringify(true));
     }
 }
+
+const btn = document.querySelector("#dark-mode");
+btn.addEventListener("click", darkMode);
 
 // function submit () {
 //     let courseArray = []
