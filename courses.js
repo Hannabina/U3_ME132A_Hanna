@@ -47,20 +47,21 @@ function findTeachers(courses) {
         let div = document.createElement("div")
         if (DATABASE.teachers[i].teacherId == courses.teachers[0]) {
             let text = div.innerHTML = `
-            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName}</h4></div>`
+            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4></div>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[1]) {
             let text = div.innerHTML = `
-            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName}</h4></div>`
+            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4></div>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[2]) {
             let text = div.innerHTML = `
-            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName}</h4></div>`
+            <div><h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${teachers[i].post})</h4></div>`
             teacherBox.push(text);
         } 
     }
     return teacherBox.toString().split(",").join("");
 }
+
 
 function renderCourses(courses){
     let coursesElement = document.getElementById("result");
