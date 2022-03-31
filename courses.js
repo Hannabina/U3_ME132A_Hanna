@@ -3,6 +3,8 @@
 let courses = DATABASE.courses;
 let teachers = DATABASE.teachers;
 
+// Funktionen skapar en div container för varje kurs som finns. Därefter skriver vi hur vår HTML 
+// ska i containern ska vara uppbyggt och vilken information som ska finnas med.
 function renderCourse(id) {
     let div = document.createElement("div");
     let courses = DATABASE.courses[id];
@@ -28,6 +30,7 @@ function renderCourse(id) {
     return div;
 }
 
+// Funktionen tar ut alla responsible teachers för varje kurs genom att matcha ihop teacher id med courseResponsible.
 function findResponsible(courses){
     let responsibleTeacher = [];
     for (let i = 0; i < DATABASE.teachers.length; i++){
@@ -41,6 +44,8 @@ function findResponsible(courses){
    return responsibleTeacher.toString().split(",").join("");
 }
 
+// Funktionen tar ut alla lärarna som undervisar i kursen genom att matcha teacherId med kursernas teachers.
+// Detta gör vi genom en loop som går igenom alla lärarna och sedan en loop innuti denna för att gå igenom alla kursernas lärare.
 function findTeachers(courses) {
     let teacherBox = [];
     for (let i = 0; i < DATABASE.teachers.length; i++) {
@@ -56,6 +61,11 @@ function findTeachers(courses) {
     return teacherBox.toString().split(",").join("");
 }
 
+// Funktionen tar ut alla studenterna som går eller har gått kursen. 
+// Detta gör vi genom att först gå igenom alla studenterna i en loop och sedan en loop innuti denna
+// som går igenom alla kurserna som varge student har gått/går.
+// Genom if och else if kan vi skapa divvar med en class för de studenter som har klarat kursen och 
+// divvar med en annan class för att få ut de som inte är klara med kursen.
 function findStudents(courses){
     let studentBox = [];
     for (let i = 0; i < DATABASE.students.length; i++){
@@ -77,6 +87,7 @@ function findStudents(courses){
     return studentBox.toString().split(",").join("");
 }
 
+// Funktionen visar vart vi vill sätta in vår container med all information.
 function renderCourses(courses){
     let coursesElement = document.getElementById("result");
     for (let course of courses){
@@ -86,14 +97,16 @@ function renderCourses(courses){
 }
 
 
+// Skapar en event listnener i vårt sökfält så vi sen kan söka på kurserna.
+let input = document.getElementById("course-search");
+input.addEventListener("keyup", courseTitle);
 
+// Funktionen gör att vi kan söka med både små och stora bokstäver 
 function searchCourseTitle() {
     return input.value.toLowerCase();
 }
 
-let input = document.getElementById("course-search");
-input.addEventListener("keyup", courseTitle);
-
+// Funktionen gör att vi får upp kurserna som stämmer in på vad vi skrivit i sökfältet som resultat.
 function courseTitle (){
     let courseArray = [];
     for ( let i = 0; i < courses.length; i++){
@@ -109,23 +122,10 @@ function courseTitle (){
     renderCourses(courseArray)
 }
 
-function checkDarkMode () {
-    const darkMode = localStorage.getItem("darkMode");
-    if (darkMode == null) {
-    localStorage.setItem("darkMode", JSON.stringify(false));
- }
-    var element = document.body;
-
-    if (JSON.parse(darkMode)== true) {
-        element.classList.add("darkMode")
-    } else {
-        element.classList.remove("darkMode");
-    }
-}
-
+//Funktionen sparar ett boolean value till local-storage
 function darkMode() {
     let element = document.body;
-    const darkMode = localStorage.getItem("darkMode")
+    let darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
 
     if (JSON.parse(darkMode) == true) {
@@ -136,23 +136,30 @@ function darkMode() {
         element.classList.add("darkMode");
         localStorage.setItem("darkMode", JSON.stringify(true));
     }
+}  
+
+// Funktionen kollar om vi har något boolean value att hämta ifrån Local Storage
+function checkDarkMode () {
+    let darkMode = localStorage.getItem("darkMode");
+    if (darkMode == null) {
+    localStorage.setItem("darkMode", JSON.stringify(false));
+    }
+    let element = document.body;
+
+    if (JSON.parse(darkMode) == true) {
+        element.classList.add("darkMode")
+    } else {
+        element.classList.remove("darkMode");
+    }
 }
 
-const btn = document.querySelector("#dark-mode");
+// Kollar om darkmode är true eller false varje gång sidan laddas om.
+window.onload = () => {
+    checkDarkMode();
+};
+
+// Skapar en klick funktion på knappen Dark/Light.
+let btn = document.querySelector("#dark-mode");
 btn.addEventListener("click", darkMode);
-
-// function submit () {
-//     let courseArray = []
-//     for ( let i = 0; i < courses.length; i++){
-//         if (courses[i].title.toLocaleLowerCase().includes(searchCourseTitle())) {
-//             courseArray.push(courses[i]);
-//         } 
-//     }
-
-//     renderCourses(courseArray)
-// }
-
-// input.addEventListener("submit", submit);
-
 
 renderCourses(DATABASE.courses);

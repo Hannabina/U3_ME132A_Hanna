@@ -1,8 +1,9 @@
 "use strict";
 
 let students = DATABASE.students
-// let student = [DATABASE.students[0], DATABASE.students[1]];
 
+// Funktionen skapar en div container för varje student som finns. Därefter skriver vi hur vår HTML 
+// ska i containern ska vara uppbyggt och vilken information som ska finnas med.
 function renderStudent(id){
     let div = document.createElement("div");
     let student = DATABASE.students[id];
@@ -20,6 +21,7 @@ function renderStudent(id){
     return div;
 }
 
+// Funktionen räknar ut varje students totala poäng 
 function totalCredits(student){
     let credits = [];
     for (let course of student.courses){
@@ -32,6 +34,7 @@ function totalCredits(student){
     return creditsSum;
 }
 
+// Funktionen visar vart vi vill att våra containers för studenterna ska finnas 
 function renderStudents(students){
     let studentsElement = document.getElementById("result");
     for ( let student of students ) {
@@ -40,6 +43,7 @@ function renderStudents(students){
     }
 }
 
+// Funktionen tar ut alla kurserna verje student har gått och vilken information som ska finnas med.
 function renderCourses(student){
     let courseDatabase = DATABASE.courses;
     let courses = [];
@@ -67,13 +71,12 @@ function renderCourses(student){
    return courseInfo.toString().split(",").join("");
 }
 
+// Funktionen gör så vi kan söka på studenterna genom deras efternamn i sökfältet.
 function searchLastName() {
     return input.value.toLowerCase();
 }
 
-let input = document.getElementById("student-search");
-input.addEventListener("keyup", studentsLastName);
-
+// Funktionen gör så vi får upp resultatet baserat på vad som skrivs in i sökfältet.
 function studentsLastName (){
     let studentsArray = [];
     for ( let i = 0; i < students.length; i++){
@@ -89,37 +92,48 @@ function studentsLastName (){
     renderStudents(studentsArray)
 }
 
+// Skapar en event listener på student-search baserat på vårt html dokument. 
+let input = document.getElementById("student-search");
+input.addEventListener("keyup", studentsLastName);
+
+//Funktionen sparar ett boolean value till local-storage
 function darkMode() {
     let element = document.body;
-    const darkMode = localStorage.getItem("darkMode")
+    let darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
 
-    if (JSON.parse(darkMode) === true) {
+    if (JSON.parse(darkMode) == true) {
         element.classList.remove("darkMode");
         localStorage.setItem("darkMode", JSON.stringify(false));
     } 
-    else if (JSON.parse(darkMode) === false) {
+    else if (JSON.parse(darkMode) == false) {
         element.classList.add("darkMode");
-        localStorage.setItem("darkMode", JSON.stringify(true)); //localStorage fungerar ej än!
+        localStorage.setItem("darkMode", JSON.stringify(true));
+    }
+}  
+
+// Funktionen kollar om vi har något boolean value att hämta ifrån Local Storage
+function checkDarkMode () {
+    let darkMode = localStorage.getItem("darkMode");
+    if (darkMode == null) {
+    localStorage.setItem("darkMode", JSON.stringify(false));
+    }
+    let element = document.body;
+
+    if (JSON.parse(darkMode) == true) {
+        element.classList.add("darkMode")
+    } else {
+        element.classList.remove("darkMode");
     }
 }
 
-const btn = document.querySelector("#dark-mode");
+// Kollar om darkMode är true eller false varge gång man laddar om sidan.
+window.onload = () => {
+    checkDarkMode();
+};
+
+// Skapar en klick funktion på knappen DARK/LIGHT
+let btn = document.querySelector("#dark-mode");
 btn.addEventListener("click", darkMode);
-
-// function submit () {
-//     let studentsArray = []
-//     for ( let i = 0; i < students.length; i++){
-//         if (students[i].lastName.toLocaleLowerCase().includes(searchLastName())) {
-//             studentsArray.push(students[i]);
-//         } 
-//     }
-
-//     renderStudents(studentsArray)
-// }
-
-// input.addEventListener("submit", submit);
-
-
 
 renderStudents(DATABASE.students);
